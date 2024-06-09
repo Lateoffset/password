@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Protected Page</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+        }
+        #message {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="password" id="password" placeholder="Enter password" />
+        <button onclick="checkPassword()">Submit</button>
+        <div id="message"></div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const passwordInput = document.getElementById('password').value;
+            const messageDiv = document.getElementById('message');
+            if (passwordInput === '1012') {
+                messageDiv.textContent = 'You have accessed the page!';
+                messageDiv.style.color = 'green';
+                messageDiv.style.display = 'block';
+            } else {
+                messageDiv.textContent = 'Please try again.';
+                messageDiv.style.color = 'red';
+                messageDiv.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
