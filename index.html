@@ -21,24 +21,30 @@
             display: none;
             margin-top: 20px;
         }
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <input type="password" id="password" placeholder="Enter password" />
+    <div class="container" id="password-container">
+        <input type="password" id="password" placeholder="Enter password" maxlength="4" />
         <button onclick="checkPassword()">Submit</button>
         <div id="message"></div>
+    </div>
+
+    <div class="container hidden" id="success-container">
+        <h1>You have accessed the page!</h1>
     </div>
 
     <script>
         function checkPassword() {
             const passwordInput = document.getElementById('password').value;
-            const messageDiv = document.getElementById('message');
             if (passwordInput === '1012') {
-                messageDiv.textContent = 'You have accessed the page!';
-                messageDiv.style.color = 'green';
-                messageDiv.style.display = 'block';
+                document.getElementById('password-container').classList.add('hidden');
+                document.getElementById('success-container').classList.remove('hidden');
             } else {
+                const messageDiv = document.getElementById('message');
                 messageDiv.textContent = 'Please try again.';
                 messageDiv.style.color = 'red';
                 messageDiv.style.display = 'block';
