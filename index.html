@@ -24,11 +24,25 @@
         .hidden {
             display: none;
         }
+        .password-container {
+            position: relative;
+            display: inline-block;
+        }
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <div class="container" id="password-container">
-        <input type="password" id="password" placeholder="Enter password" maxlength="4" />
+        <div class="password-container">
+            <input type="password" id="password" placeholder="Enter password" maxlength="4" />
+            <span class="toggle-password" onclick="togglePassword()">👁️</span>
+        </div>
         <button onclick="checkPassword()">Submit</button>
         <div id="message"></div>
     </div>
@@ -38,6 +52,15 @@
     </div>
 
     <script>
+        function togglePassword() {
+            const passwordField = document.getElementById('password');
+            const passwordFieldType = passwordField.getAttribute('type');
+            passwordField.setAttribute(
+                'type',
+                passwordFieldType === 'password' ? 'text' : 'password'
+            );
+        }
+
         function checkPassword() {
             const passwordInput = document.getElementById('password').value;
             if (passwordInput === '1012') {
